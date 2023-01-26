@@ -100,7 +100,7 @@ jobs:
         run: poetry run pytest -v
       
       - name: Run pyupgrade
-        run: find src -name '*.py' -type f | xargs -n 1 -I {} poetry run pyupgrade --py37-plus {}
+        run: find src -name '*.py' -type f | xargs -n 1 -I {} poetry run pyupgrade --py310-plus {}
 
       - name: Check for clean working tree
         run: |
