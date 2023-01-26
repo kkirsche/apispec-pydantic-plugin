@@ -12,7 +12,6 @@ python = "^3.11"
 pydantic = ">=1.10.4,<2"
 apispec = ">=6.0.2,<7"
 
-
 [tool.poetry.group.dev.dependencies]
 isort = "^5.11.4"
 example-isort-formatting-plugin = "^0.1.1"
