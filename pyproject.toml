@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "apispec-pydantic-plugin"
+version = "0.1.0"
+description = ""
+authors = ["Kevin Kirsche <kevin.kirsche@one.verizon.com>"]
+readme = "README.md"
+packages = [{ include = "apispec_pydantic_plugin", from = "src" }]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
