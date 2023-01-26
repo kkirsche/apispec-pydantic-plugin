@@ -10,6 +10,19 @@ packages = [{ include = "apispec_pydantic_plugin", from = "src" }]
 python = "^3.11"
 
 
+[tool.poetry.group.dev.dependencies]
+isort = "^5.11.4"
+example-isort-formatting-plugin = "^0.1.1"
+example-isort-sorting-plugin = "^0.1.0"
+black = "^22.12.0"
+mypy = "^0.991"
+bandit = "^1.7.4"
+flake8 = "^6.0.0"
+flake8-bugbear = "^23.1.20"
+flake8-pyi = "^23.1.0"
+codespell = "^2.2.2"
+pyupgrade = "^3.3.1"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
