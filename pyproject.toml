@@ -5,6 +5,7 @@ description = ""
 authors = ["Kevin Kirsche <kevin.kirsche@one.verizon.com>"]
 readme = "README.md"
 packages = [{ include = "apispec_pydantic_plugin", from = "src" }]
+include = ["src/apispec_pydantic_plugin/py.typed"]
 
 [tool.poetry.dependencies]
 python = "^3.11"
