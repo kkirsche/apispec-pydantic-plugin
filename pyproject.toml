@@ -8,7 +8,7 @@ packages = [{ include = "apispec_pydantic_plugin", from = "src" }]
 include = ["src/apispec_pydantic_plugin/py.typed"]
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.10"
 pydantic = ">=1.10.4,<2"
 apispec = ">=6.0.2,<7"
 
