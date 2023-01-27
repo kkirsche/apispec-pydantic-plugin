@@ -90,7 +90,7 @@ class SchemaResolver:
         self, schema: dict[str, Any] | type[BaseModelAlias] | BaseModelAlias | str
     ) -> Any:
         if not isinstance(schema, dict):
-            resolved = resolve_schema_instance(schema=schema).schema
+            resolved = resolve_schema_instance(schema=schema).schema()
             return resolved
 
         if schema.get("type") == "array" and "items" in schema:
