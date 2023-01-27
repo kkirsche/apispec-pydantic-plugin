@@ -1,6 +1,6 @@
-from apispec_pydantic_plugin import ApiGenericModel, ApiBaseModel, Registry
 from typing import Generic, TypeVar
 
+from apispec_pydantic_plugin import ApiBaseModel, ApiGenericModel, Registry
 
 _T = TypeVar("_T")
 
