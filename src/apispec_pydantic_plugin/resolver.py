@@ -81,11 +81,10 @@ class SchemaResolver:
         if "schema" in data:
             data["schema"] = self.resolve_schema_dict(data["schema"])
         # OAS 3 component except header
-        if self.openapi_version.major >= 3:
-            if "content" in data:
-                for content in data["content"].values():
-                    if "schema" in content:
-                        content["schema"] = self.resolve_schema_dict(content["schema"])
+        if self.openapi_version.major >= 3 and "content" in data:
+            for content in data["content"].values():
+                if "schema" in content:
+                    content["schema"] = self.resolve_schema_dict(content["schema"])
 
     def resolve_schema_dict(
         self, schema: dict[str, Any] | type[BaseModelAlias] | BaseModelAlias | str
