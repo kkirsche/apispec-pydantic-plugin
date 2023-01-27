@@ -3,7 +3,7 @@ from typing import Any
 from packaging.version import Version
 from pydantic import BaseModel
 
-from apispec_pydantic_plugin.api_model import BaseModelAlias
+from apispec_pydantic_plugin.models import BaseModelAlias
 from apispec_pydantic_plugin.registry import Registry
 
 

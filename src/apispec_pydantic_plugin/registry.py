@@ -3,7 +3,7 @@ from typing import TYPE_CHECKING, ClassVar
 from apispec_pydantic_plugin.errors import ModelNotFoundError
 
 if TYPE_CHECKING:
-    from apispec_pydantic_plugin.api_model import BaseModelAlias
+    from apispec_pydantic_plugin.models import BaseModelAlias
 
 
 class Registry:

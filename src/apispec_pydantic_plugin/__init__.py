@@ -1,4 +1,3 @@
-from apispec_pydantic_plugin.api_model import ApiBaseModel
 from apispec_pydantic_plugin.errors import (
     ApispecPydanticPluginError,
     ApiSpecPydanticPluginKeyError,
@@ -6,17 +5,19 @@ from apispec_pydantic_plugin.errors import (
     ModelNotFoundError,
     ResolverNotFound,
 )
-from apispec_pydantic_plugin.registry import Registry
+from apispec_pydantic_plugin.models import ApiBaseModel, ApiGenericModel
 from apispec_pydantic_plugin.pydantic_plugin import PydanticPlugin
+from apispec_pydantic_plugin.registry import Registry
 
 # isort: unique-list
 __all__ = [
     "ApiBaseModel",
-    "ApispecPydanticPluginError",
+    "ApiGenericModel",
     "ApiSpecPydanticPluginKeyError",
     "ApiSpecPydanticPluginValueError",
+    "ApispecPydanticPluginError",
     "ModelNotFoundError",
+    "PydanticPlugin",
     "Registry",
     "ResolverNotFound",
-    "PydanticPlugin",
 ]
