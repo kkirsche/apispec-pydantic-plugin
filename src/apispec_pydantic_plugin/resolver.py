@@ -211,11 +211,13 @@ class SchemaResolver:
         return schema
 
     def resolve_nested_schema(self, schema: Any) -> None:
-        # registration
+        self.register_schema(schema=schema)
+        return self.get_ref_dict(schema=schema)
+
+    def register_schema(self, schema: Any) -> None:
         resolved = resolve_schema_instance(schema=schema)
         with suppress(DuplicateComponentNameError):
             self.spec.components.schema(component_id=schema, model=resolved)
-        return self.get_ref_dict(schema=schema)
 
     def get_ref_dict(self, schema: Any) -> dict[str, str]:
         """This method is responsible for storing a ref dictionary
