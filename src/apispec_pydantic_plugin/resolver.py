@@ -1,11 +1,11 @@
 from contextlib import suppress
 from typing import Any
 
+from apispec import APISpec
+from apispec.exceptions import DuplicateComponentNameError
 from packaging.version import Version
 from pydantic import BaseModel
 
-from apispec import APISpec
-from apispec.exceptions import DuplicateComponentNameError
 from apispec_pydantic_plugin.models import BaseModelAlias
 from apispec_pydantic_plugin.registry import Registry
 

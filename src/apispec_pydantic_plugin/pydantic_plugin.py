@@ -5,8 +5,8 @@ from apispec import APISpec, BasePlugin
 from apispec.exceptions import DuplicateComponentNameError
 from packaging.version import Version
 
-from apispec_pydantic_plugin.models import BaseModelAlias
 from apispec_pydantic_plugin.errors import ResolverNotFound
+from apispec_pydantic_plugin.models import BaseModelAlias
 from apispec_pydantic_plugin.resolver import SchemaResolver
 
 
