@@ -1,10 +1,12 @@
+from contextlib import suppress
 from typing import Any
 
 from apispec import APISpec, BasePlugin
+from apispec.exceptions import DuplicateComponentNameError
 from packaging.version import Version
 
+from apispec_pydantic_plugin.models import BaseModelAlias
 from apispec_pydantic_plugin.errors import ResolverNotFound
-from apispec_pydantic_plugin.registry import Registry
 from apispec_pydantic_plugin.resolver import SchemaResolver
 
 
@@ -28,8 +30,7 @@ class PydanticPlugin(BasePlugin):
         """
         super().init_spec(spec=spec)
         self.spec = spec
-        self.openapi_version = spec.openapi_version
-        self.resolver = SchemaResolver(openapi_version=self.openapi_version)
+        self.resolver = SchemaResolver(spec=self.spec)
 
     def schema_helper(
         self, name: str, definition: dict[Any, Any], **kwargs: Any
@@ -41,12 +42,21 @@ class PydanticPlugin(BasePlugin):
             definition: Schema definition
             kwargs: All additional keyword arguments sent to `APISpec.schema()`
         """
-        schema = kwargs.get("schema")
-        model = Registry.get(name)
-        schema = model.schema(ref_template="#/components/schemas/{model}")
-        if "definitions" in schema:
-            del schema["definitions"]
-        return schema
+        model: BaseModelAlias | None = kwargs.pop("model", None)
+        if model:
+            schema = model.schema(ref_template="#/components/schemas/{model}")
+
+            if self.spec and "definitions" in schema:
+                for (k, v) in schema["definitions"].items():
+                    with suppress(DuplicateComponentNameError):
+                        self.spec.components.schema(k, v)
+
+            if "definitions" in schema:
+                del schema["definitions"]
+
+            return schema
+
+        return None
 
     def operation_helper(
         self,
