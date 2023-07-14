@@ -47,7 +47,7 @@ class PydanticPlugin(BasePlugin):
             schema = model.schema(ref_template="#/components/schemas/{model}")
 
             if self.spec and "definitions" in schema:
-                for (k, v) in schema["definitions"].items():
+                for k, v in schema["definitions"].items():
                     with suppress(DuplicateComponentNameError):
                         self.spec.components.schema(k, v)
 
