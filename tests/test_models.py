@@ -1,6 +1,6 @@
 from typing import Generic, TypeVar
 
-from apispec_pydantic_plugin import ApiBaseModel, ApiGenericModel, Registry
+from apispec_pydantic_plugin import ApiBaseModel, Registry
 
 _T = TypeVar("_T")
 
@@ -9,7 +9,7 @@ class ApiModel(ApiBaseModel):
     items: list[int]
 
 
-class GenericApiModel(ApiGenericModel, Generic[_T]):
+class GenericApiModel(ApiBaseModel, Generic[_T]):
     items: list[_T]
 
 
