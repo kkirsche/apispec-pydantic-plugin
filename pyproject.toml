@@ -9,22 +9,22 @@ include = ["src/apispec_pydantic_plugin/py.typed"]
 
 [tool.poetry.dependencies]
 python = "^3.10"
-pydantic = ">=1.10.4,<2"
+pydantic = ">=2.0.3,<3"
 apispec = ">=6.0.2,<7"
 
 [tool.poetry.group.dev.dependencies]
 isort = "^5.12.0"
 example-isort-formatting-plugin = "^0.1.1"
 example-isort-sorting-plugin = "^0.1.0"
-black = {extras = ["toml"], version = "^22.12.0"}
-mypy = "^0.991"
-bandit = "^1.7.4"
+black = {extras = ["toml"], version = "^23.7.0"}
+mypy = "^1.4.1"
+bandit = "^1.7.5"
 flake8 = "^6.0.0"
-flake8-bugbear = "^23.1.20"
-flake8-pyi = "^23.1.1"
-codespell = "^2.2.2"
-pyupgrade = "^3.3.1"
-pytest = "^7.2.1"
+flake8-bugbear = "^23.7.10"
+flake8-pyi = "^23.6.0"
+codespell = "^2.2.5"
+pyupgrade = "^3.9.0"
+pytest = "^7.4.0"
 
 [build-system]
 requires = ["poetry-core"]
