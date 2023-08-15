@@ -33,7 +33,7 @@ class PydanticPlugin(BasePlugin):
         self.resolver = SchemaResolver(spec=self.spec)
 
     def schema_helper(
-        self, name: str, definition: dict[Any, Any], **kwargs: Any
+        self, name: str, definition: dict[Any, Any], **kwargs: Any  # noqa: ARG002
     ) -> dict[str, Any] | None:
         """Return the schema of the requested identifier.
 
@@ -60,7 +60,7 @@ class PydanticPlugin(BasePlugin):
 
     def operation_helper(
         self,
-        path: str | None = None,
+        path: str | None = None,  # noqa: ARG002
         operations: dict[str, Any] | None = None,
         **kwargs: Any,
     ) -> None:

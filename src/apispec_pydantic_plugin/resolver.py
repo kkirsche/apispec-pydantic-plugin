@@ -38,7 +38,7 @@ class SchemaResolver:
         self.openapi_version = spec.openapi_version
 
     def resolve_operations(
-        self, operations: dict[str, Any] | None, **kwargs: Any
+        self, operations: dict[str, Any] | None, **kwargs: Any  # noqa: ARG002
     ) -> None:
         """Resolves an operations dictionary into an OpenAPI operations object.
 
