@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "apispec-pydantic-plugin"
-version = "0.3.1"
+version = "0.4.0"
 description = ""
 authors = ["Kevin Kirsche <kevin.kirsche@one.verizon.com>"]
 readme = "README.md"
@@ -10,7 +10,7 @@ include = ["src/apispec_pydantic_plugin/py.typed"]
 [tool.poetry.dependencies]
 python = ">=3.10,<4"
 apispec = ">=6.3.0,<7"
-pydantic = ">=2.1.1,<3"
+pydantic = ">=2.3.0,<3"
 
 [tool.poetry.group.dev.dependencies]
 black = { extras = ["toml"], version = "^23.7.0" }
