@@ -44,7 +44,9 @@ class PydanticPlugin(BasePlugin):
         """
         model: BaseModelAlias | None = kwargs.pop("model", None)
         if model:
-            schema = model.schema(ref_template="#/components/schemas/{model}")
+            schema = model.model_json_schema(
+                ref_template="#/components/schemas/{model}"
+            )
 
             if self.spec and "definitions" in schema:
                 for k, v in schema["definitions"].items():
