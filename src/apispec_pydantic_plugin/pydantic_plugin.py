@@ -53,7 +53,7 @@ class PydanticPlugin(BasePlugin):
             # I kept both because this used to work, but I don't remember if it was
             # on an earlier version of v2 or the last version of 1. It shouldn't harm
             # anything though other than a slight performance hit for the looping
-            for key in {"definitions", "$defs"}:
+            for key in ("definitions", "$defs"):
                 if self.spec and key in schema:
                     for k, v in schema[key].items():
                         with suppress(DuplicateComponentNameError):
