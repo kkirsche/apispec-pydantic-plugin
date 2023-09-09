@@ -48,13 +48,19 @@ class PydanticPlugin(BasePlugin):
                 ref_template="#/components/schemas/{model}"
             )
 
-            if self.spec and "definitions" in schema:
-                for k, v in schema["definitions"].items():
-                    with suppress(DuplicateComponentNameError):
-                        self.spec.components.schema(k, v)
+            # definitions is for Pydantic v1
+            # $defs is for Pydantic v2
+            # I kept both because this used to work, but I don't remember if it was
+            # on an earlier version of v2 or the last version of 1. It shouldn't harm
+            # anything though other than a slight performance hit for the looping
+            for key in {"definitions", "$defs"}:
+                if self.spec and key in schema:
+                    for k, v in schema[key].items():
+                        with suppress(DuplicateComponentNameError):
+                            self.spec.components.schema(k, v)
 
-            if "definitions" in schema:
-                del schema["definitions"]
+                if key in schema:
+                    del schema[key]
 
             return schema
 
