@@ -13,7 +13,7 @@ apispec = ">=6.3.0,<7"
 pydantic = ">=2.3.0,<3"
 
 [tool.poetry.group.dev.dependencies]
-black = { extras = ["toml"], version = "^23.9.0" }
+black = { extras = ["toml", "colorama"], version = "^23.9.1" }
 codespell = "^2.2.5"
 example-isort-formatting-plugin = "^0.1.1"
 example-isort-sorting-plugin = "^0.1.0"
