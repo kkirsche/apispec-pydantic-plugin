@@ -20,7 +20,7 @@ example-isort-sorting-plugin = "^0.1.0"
 isort = "^5.12.0"
 mypy = "^1.5.1"
 pytest = "^7.4.2"
-ruff = "^0.0.287"
+ruff = "^0.0.291"
 
 [build-system]
 requires = ["poetry-core"]
