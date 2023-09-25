@@ -1,11 +1,12 @@
 from contextlib import suppress
-from typing import Any
+from typing import Any, ClassVar
 
 from apispec import APISpec
 from apispec.exceptions import DuplicateComponentNameError
 from packaging.version import Version
 from pydantic import BaseModel
 
+from apispec_pydantic_plugin.constants import OPENAPI_VERSION_MAJOR_V3
 from apispec_pydantic_plugin.models import BaseModelAlias
 from apispec_pydantic_plugin.registry import Registry
 
@@ -31,7 +32,7 @@ class SchemaResolver:
     """
 
     openapi_version: Version
-    refs: dict[str, dict[str, Any]] = {}
+    refs: ClassVar[dict[str, dict[str, Any]]] = {}
 
     def __init__(self, spec: APISpec) -> None:
         self.spec = spec
@@ -97,7 +98,7 @@ class SchemaResolver:
                 operation["parameters"] = self.resolve_parameters(
                     operation["parameters"]
                 )
-            if self.openapi_version.major >= 3:
+            if self.openapi_version.major >= OPENAPI_VERSION_MAJOR_V3:
                 self.resolve_callback(operation.get("callbacks", {}))
                 if "requestBody" in operation:
                     self.resolve_schema(operation["requestBody"])
@@ -158,7 +159,7 @@ class SchemaResolver:
                 resolved += self.converter.schema2parameters(
                     schema_instance, location=parameter.pop("in"), **parameter
                 )
-            else:
+            else:  # noqa: RET506
                 self.resolve_schema(parameter)
                 resolved.append(parameter)
         return resolved
@@ -186,7 +187,7 @@ class SchemaResolver:
             data["schema"] = self.resolve_schema_dict(data["schema"])
 
         # OAS 3 component except header
-        if self.openapi_version.major >= 3 and "content" in data:
+        if self.openapi_version.major >= OPENAPI_VERSION_MAJOR_V3 and "content" in data:
             for content in data["content"].values():
                 if "schema" in content:
                     content["schema"] = self.resolve_schema_dict(content["schema"])
