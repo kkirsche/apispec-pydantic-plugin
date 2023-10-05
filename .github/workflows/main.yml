@@ -21,7 +21,7 @@ jobs:
       matrix:
         os: [Ubuntu, macOS, Windows]
         # https://github.com/actions/python-versions/blob/main/versions-manifest.json
-        python-version: ["3.10", "3.11"]
+        python-version: ["3.10", "3.11", "3.12"]
         # https://github.com/actions/runner-images#available-images
         include:
           - os: Ubuntu
@@ -87,7 +87,7 @@ jobs:
       - name: Run codespell
         run: poetry run codespell --write-changes src tests *.md
 
-      - name: Run flake8
+      - name: Run ruff
         run: poetry run ruff .
 
       - name: Run mypy
