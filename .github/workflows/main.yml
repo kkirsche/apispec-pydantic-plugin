@@ -1,3 +1,4 @@
+# based on https://github.com/python-poetry/poetry/blob/master/.github/workflows/main.yml
 name: Tests
 
 on:
