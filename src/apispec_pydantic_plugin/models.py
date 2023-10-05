@@ -16,7 +16,7 @@ class ApiBaseModel(BaseModel):
 class ApiRootModel(RootModel[_T]):
     def __init_subclass__(cls) -> None:
         Registry.register(cls)
-        return super().__init_subclass__()  # type: ignore[no-any-return, no-untyped-call] # noqa: E501
+        return super().__init_subclass__()  # type: ignore[no-any-return, no-untyped-call]
 
 
 BaseModelAlias: TypeAlias = ApiBaseModel | ApiRootModel | BaseModel

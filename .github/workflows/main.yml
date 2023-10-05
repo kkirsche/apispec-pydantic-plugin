@@ -1,3 +1,4 @@
+# based on https://github.com/python-poetry/poetry/blob/master/.github/workflows/main.yml
 name: Tests
 
 on:
@@ -21,7 +22,7 @@ jobs:
       matrix:
         os: [Ubuntu, macOS, Windows]
         # https://github.com/actions/python-versions/blob/main/versions-manifest.json
-        python-version: ["3.10", "3.11"]
+        python-version: ["3.10", "3.11", "3.12"]
         # https://github.com/actions/runner-images#available-images
         include:
           - os: Ubuntu
@@ -35,7 +36,7 @@ jobs:
       run:
         shell: bash
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
@@ -49,6 +50,7 @@ jobs:
       - name: Bootstrap poetry
         run: |
           curl -sL https://install.python-poetry.org | python - -y
+
       - name: Update PATH
         if: ${{ matrix.os != 'Windows' }}
         run: echo "$HOME/.local/bin" >> $GITHUB_PATH
@@ -56,6 +58,12 @@ jobs:
       - name: Update Path for Windows
         if: ${{ matrix.os == 'Windows' }}
         run: echo "$APPDATA\Python\Scripts" >> $GITHUB_PATH
+
+      - name: Enable long paths for git on Windows
+        if: ${{ matrix.os == 'Windows' }}
+        # Enable handling long path names (+260 char) on the Windows platform
+        # https://docs.microsoft.com/en-us/windows/win32/fileio/naming-a-file#maximum-path-length-limitation
+        run: git config --system core.longpaths true
 
       - name: Configure poetry
         run: poetry config virtualenvs.in-project true
@@ -87,7 +95,7 @@ jobs:
       - name: Run codespell
         run: poetry run codespell --write-changes src tests *.md
 
-      - name: Run flake8
+      - name: Run ruff
         run: poetry run ruff .
 
       - name: Run mypy
