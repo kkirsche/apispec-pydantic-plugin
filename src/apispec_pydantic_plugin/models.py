@@ -19,4 +19,4 @@ class ApiRootModel(RootModel[_T]):
         return super().__init_subclass__()  # type: ignore[no-any-return, no-untyped-call]
 
 
-BaseModelAlias: TypeAlias = ApiBaseModel | ApiRootModel | BaseModel
+BaseModelAlias: TypeAlias = ApiBaseModel | ApiRootModel[_T] | BaseModel
