@@ -1,5 +1,5 @@
 from contextlib import suppress
-from typing import Any, ClassVar
+from typing import Any, ClassVar, Generic, TypeVar
 
 from apispec import APISpec
 from apispec.exceptions import DuplicateComponentNameError
@@ -10,10 +10,12 @@ from apispec_pydantic_plugin.constants import OPENAPI_VERSION_MAJOR_V3
 from apispec_pydantic_plugin.models import BaseModelAlias
 from apispec_pydantic_plugin.registry import Registry
 
+_T = TypeVar("_T")
+
 
 def resolve_schema_instance(
-    schema: type[BaseModelAlias] | BaseModelAlias | str,
-) -> type[BaseModelAlias]:
+    schema: type[BaseModelAlias[_T]] | BaseModelAlias[_T] | str,
+) -> type[BaseModelAlias[_T]]:
     if isinstance(schema, type) and issubclass(schema, BaseModel):
         return Registry.get(name=schema.__name__)
     if isinstance(schema, BaseModel):
@@ -21,7 +23,7 @@ def resolve_schema_instance(
     return Registry.get(name=schema)
 
 
-class SchemaResolver:
+class SchemaResolver(Generic[_T]):
     """SchemaResolver is responsible for modifying a schema.
 
     This class relies heavily on the fact that dictionaries are mutable,
@@ -195,7 +197,8 @@ class SchemaResolver:
                     content["schema"] = self.resolve_schema_dict(content["schema"])
 
     def resolve_schema_dict(
-        self, schema: dict[str, Any] | type[BaseModelAlias] | BaseModelAlias | str
+        self,
+        schema: dict[str, Any] | type[BaseModelAlias[_T]] | BaseModelAlias[_T] | str,
     ) -> Any:
         if not isinstance(schema, dict):
             return self.resolve_nested_schema(schema)

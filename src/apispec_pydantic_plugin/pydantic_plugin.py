@@ -1,5 +1,5 @@
 from contextlib import suppress
-from typing import Any
+from typing import Any, Generic, TypeVar
 
 from apispec import APISpec, BasePlugin
 from apispec.exceptions import DuplicateComponentNameError
@@ -9,13 +9,15 @@ from apispec_pydantic_plugin.errors import ResolverNotFound
 from apispec_pydantic_plugin.models import BaseModelAlias
 from apispec_pydantic_plugin.resolver import SchemaResolver
 
+_T = TypeVar("_T")
 
-class PydanticPlugin(BasePlugin):
+
+class PydanticPlugin(BasePlugin, Generic[_T]):
     """APISpec plugin for translating pydantic models to OpenAPI/JSONSchema format."""
 
     spec: APISpec | None
     openapi_version: Version | None
-    resolver: SchemaResolver | None
+    resolver: SchemaResolver[_T] | None
 
     def __init__(self) -> None:
         self.spec = None
@@ -45,7 +47,7 @@ class PydanticPlugin(BasePlugin):
             definition: Schema definition
             kwargs: All additional keyword arguments sent to `APISpec.schema()`
         """
-        model: BaseModelAlias | None = kwargs.pop("model", None)
+        model: BaseModelAlias[_T] | None = kwargs.pop("model", None)
         if model:
             schema = model.model_json_schema(
                 ref_template="#/components/schemas/{model}"
