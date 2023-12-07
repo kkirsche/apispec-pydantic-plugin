@@ -1,4 +1,4 @@
-from typing import TypeAlias, TypeVar, Any
+from typing import Any, TypeAlias, TypeVar
 
 from pydantic import BaseModel, RootModel
 
