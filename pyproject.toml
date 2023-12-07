@@ -13,15 +13,15 @@ apispec = ">=6.3.0,<7"
 pydantic = ">=2.3.0,<3"
 
 [tool.poetry.group.dev.dependencies]
-black = { extras = ["toml", "colorama"], version = "^23.10.1" }
+black = { extras = ["toml", "colorama"], version = "^23.11.0" }
 codespell = "^2.2.6"
 example-isort-formatting-plugin = "^0.1.1"
 example-isort-sorting-plugin = "^0.1.0"
 isort = "^5.12.0"
-mypy = "^1.6.1"
-pytest = "^7.4.2"
-ruff = "^0.1.1"
-setuptools = { python = ">=3.12,<4", version = "^68.2.2" }
+mypy = "^1.7.1"
+pytest = "^7.4.3"
+ruff = "^0.1.7"
+setuptools = { python = ">=3.12,<4", version = "^69.0.2" }
 
 [build-system]
 requires = ["poetry-core"]
