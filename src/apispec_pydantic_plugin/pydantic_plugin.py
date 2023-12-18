@@ -5,7 +5,7 @@ from apispec import APISpec, BasePlugin
 from apispec.exceptions import DuplicateComponentNameError
 from packaging.version import Version
 
-from apispec_pydantic_plugin.errors import ResolverNotFound
+from apispec_pydantic_plugin.errors import ResolverNotFoundError
 from apispec_pydantic_plugin.models import BaseModelAlias
 from apispec_pydantic_plugin.resolver import SchemaResolver
 
@@ -76,5 +76,5 @@ class PydanticPlugin(BasePlugin):
         **kwargs: Any,
     ) -> None:
         if self.resolver is None:
-            raise ResolverNotFound("SchemaResolver was not initialized")
+            raise ResolverNotFoundError("SchemaResolver was not initialized")
         self.resolver.resolve_operations(operations=operations, kwargs=kwargs)

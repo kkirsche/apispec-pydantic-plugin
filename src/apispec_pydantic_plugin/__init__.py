@@ -3,7 +3,7 @@ from apispec_pydantic_plugin.errors import (
     ApiSpecPydanticPluginKeyError,
     ApiSpecPydanticPluginValueError,
     ModelNotFoundError,
-    ResolverNotFound,
+    ResolverNotFoundError,
 )
 from apispec_pydantic_plugin.models import ApiBaseModel, ApiRootModel
 from apispec_pydantic_plugin.pydantic_plugin import PydanticPlugin
@@ -19,5 +19,5 @@ __all__ = [
     "ModelNotFoundError",
     "PydanticPlugin",
     "Registry",
-    "ResolverNotFound",
+    "ResolverNotFoundError",
 ]
