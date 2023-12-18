@@ -13,26 +13,14 @@ apispec = ">=6.3.0,<7"
 pydantic = ">=2.3.0,<3"
 
 [tool.poetry.group.dev.dependencies]
-black = { extras = ["toml", "colorama"], version = "^23.11.0" }
 codespell = "^2.2.6"
-example-isort-formatting-plugin = "^0.1.1"
-example-isort-sorting-plugin = "^0.1.0"
-isort = "^5.12.0"
 mypy = "^1.7.1"
 pytest = "^7.4.3"
-ruff = "^0.1.7"
-setuptools = { python = ">=3.12,<4", version = "^69.0.2" }
+ruff = "^0.1.8"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
-
-[tool.isort]
-formatter = "example"
-profile = "black"
-remove_redundant_aliases = true
-sort_order = "natural_plus"
-py_version = 311
 
 [tool.bandit]
 exclude = ["/tests"]
@@ -46,11 +34,6 @@ testpaths = ["tests"]
 [tool.pylint."MESSAGES CONTROL"]
 disable = "C0330, C0326"
 max_line_length = 88
-
-[tool.black]
-include = '\.pyi?$'
-line-length = 88
-target-version = ['py310']
 
 [tool.mypy]
 files = ["."]
@@ -112,11 +95,18 @@ select = [
 ]
 target-version = "py310"
 line-length = 88
+fix = true
+preview = true
 extend-ignore = [
     "TRY003",  # Avoid specifying long messages outside the exception class
     "PLR0913", # Too many arguments to function call (n > 5)
 ]
 extend-exclude = ["tests", "test_api_rbac.py"]
+
+[tool.ruff.format]
+# Use Unix-style line endings.
+line-ending = "lf"
+docstring-code-format = true
 
 [tool.ruff.mccabe]
 max-complexity = 15
