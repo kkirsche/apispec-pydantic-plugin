@@ -14,5 +14,5 @@ class ModelNotFoundError(ApiSpecPydanticPluginKeyError):
     pass
 
 
-class ResolverNotFound(ApiSpecPydanticPluginValueError):
+class ResolverNotFoundError(ApiSpecPydanticPluginValueError):
     pass
