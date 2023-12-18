@@ -1,13 +1,15 @@
 from contextlib import suppress
-from typing import Any
+from typing import TYPE_CHECKING, Any
 
 from apispec import APISpec, BasePlugin
 from apispec.exceptions import DuplicateComponentNameError
 from packaging.version import Version
 
 from apispec_pydantic_plugin.errors import ResolverNotFoundError
-from apispec_pydantic_plugin.models import BaseModelAlias
 from apispec_pydantic_plugin.resolver import SchemaResolver
+
+if TYPE_CHECKING:
+    from apispec_pydantic_plugin.models import BaseModelAlias
 
 
 class PydanticPlugin(BasePlugin):
