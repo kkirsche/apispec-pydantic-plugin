@@ -1,8 +1,8 @@
 [tool.poetry]
 name = "apispec-pydantic-plugin"
-version = "0.5.0"
-description = ""
-authors = ["Kevin Kirsche <kevin.kirsche@one.verizon.com>"]
+version = "0.5.1"
+description = "A plugin to integrate apispec with pydantic models."
+authors = ["Kevin Kirsche <quake.01.slatted@icloud.com>"]
 readme = "README.md"
 packages = [{ include = "apispec_pydantic_plugin", from = "src" }]
 include = ["src/apispec_pydantic_plugin/py.typed"]
@@ -14,9 +14,9 @@ pydantic = ">=2.3.0,<3"
 
 [tool.poetry.group.dev.dependencies]
 codespell = "^2.2.6"
-mypy = "^1.7.1"
-pytest = "^7.4.3"
-ruff = "^0.1.8"
+mypy = "^1.8.0"
+pytest = "^8.0.2"
+ruff = "^0.3.0"
 
 [build-system]
 requires = ["poetry-core"]
