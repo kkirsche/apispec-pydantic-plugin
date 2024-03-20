@@ -124,8 +124,8 @@ extend-ignore = [
 max-complexity = 15
 
 [tool.ruff.lint.per-file-ignores]
-"src/hades/controllers/v1/firewall/metrics.py" = ["E501"]
-"src/hades/views/redoc.py" = ["E501"]
+"poetry-update-helper.py" = ["T201", "S404"]
+"tests/**/*.py" = ["S101"]
 
 [tool.ruff.format]
 # Use Unix-style line endings.
