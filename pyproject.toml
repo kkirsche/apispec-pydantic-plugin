@@ -55,6 +55,13 @@ warn_required_dynamic_aliases = true
 warn_untyped_fields = true
 
 [tool.ruff]
+target-version = "py310"
+line-length = 88
+fix = true
+preview = true
+extend-exclude = []
+
+[tool.ruff.lint]
 # https://beta.ruff.rs/docs/settings/#select
 # https://beta.ruff.rs/docs/rules/ defines what the select codes mean
 select = [
@@ -107,24 +114,20 @@ select = [
     "W",
     "YTT",
 ]
-target-version = "py310"
-line-length = 88
-fix = true
-preview = true
 extend-ignore = [
     "TRY003",  # Avoid specifying long messages outside the exception class
     "PLR0913", # Too many arguments to function call (n > 5)
+    "ISC001",  # doesn't work well with ruff formatter
 ]
-extend-exclude = ["tests", "test_api_rbac.py"]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 15
+
+[tool.ruff.lint.per-file-ignores]
+"src/hades/controllers/v1/firewall/metrics.py" = ["E501"]
+"src/hades/views/redoc.py" = ["E501"]
 
 [tool.ruff.format]
 # Use Unix-style line endings.
 line-ending = "lf"
 docstring-code-format = true
-
-[tool.ruff.mccabe]
-max-complexity = 15
-
-[tool.ruff.per-file-ignores]
-"src/hades/controllers/v1/firewall/metrics.py" = ["E501"]
-"src/hades/views/redoc.py" = ["E501"]
