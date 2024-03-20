@@ -50,7 +50,7 @@ class PydanticPlugin(BasePlugin):
         model: BaseModelAlias | None = kwargs.pop("model", None)
         if model:
             schema = model.model_json_schema(
-                ref_template="#/components/schemas/{model}"
+                ref_template="#/components/schemas/{model}"  # noqa: RUF027
             )
 
             # definitions is for Pydantic v1
