@@ -87,7 +87,7 @@ jobs:
         run: poetry install --with dev
 
       - name: Run ruff lint
-        run: poetry run ruff .
+        run: poetry run ruff check .
 
       - name: Run ruff format
         run: poetry run ruff format .
