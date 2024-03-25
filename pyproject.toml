@@ -16,7 +16,7 @@ pydantic = ">=2.3.0,<3"
 codespell = "^2.2.6"
 mypy = "^1.9.0"
 pytest = "^8.1.1"
-ruff = "^0.3.3"
+ruff = "^0.3.4"
 
 [build-system]
 requires = ["poetry-core"]
