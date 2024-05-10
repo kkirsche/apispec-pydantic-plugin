@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "apispec-pydantic-plugin"
-version = "0.5.1"
+version = "0.5.2"
 description = ""
 authors = ["Kevin Kirsche <kevin.kirsche@one.verizon.com>"]
 readme = "README.md"
