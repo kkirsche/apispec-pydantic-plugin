@@ -9,14 +9,14 @@ include = ["src/apispec_pydantic_plugin/py.typed"]
 
 [tool.poetry.dependencies]
 python = ">=3.10,<4"
-apispec = ">=6.3.0,<7"
-pydantic = ">=2.3.0,<3"
+apispec = "^6.6.1,<7"
+pydantic = "^2.8.2,<3"
 
 [tool.poetry.group.dev.dependencies]
 codespell = "^2.3.0"
-mypy = "^1.11.0"
-pytest = "^8.3.1"
-ruff = "^0.5.4"
+mypy = "^1.11.1"
+pytest = "^8.3.2"
+ruff = "^0.5.7"
 
 
 [build-system]
@@ -57,64 +57,82 @@ warn_required_dynamic_aliases = true
 warn_untyped_fields = true
 
 [tool.ruff]
-target-version = "py310"
-line-length = 88
 fix = true
+indent-width = 4
+line-length = 88
 preview = true
-extend-exclude = []
+target-version = "py310"
 
 [tool.ruff.lint]
-# https://beta.ruff.rs/docs/settings/#select
-# https://beta.ruff.rs/docs/rules/ defines what the select codes mean
+# https://docs.astral.sh/ruff/settings/#lint_select
+# https://docs.astral.sh/ruff/rules/ defines what the select codes mean
+# Last updated Friday, July 26, 2024
+# Order of select matches the ruff rules page to make comparisons simpler
 select = [
-    "A",
-    "ARG",
-    "ASYNC",
-    "B",
-    "BLE",
-    "C4",
-    "C90",
-    "DTZ",
-    "E",
-    "EXE",
-    "F",
-    "FA",
-    "FBT",
-    "FIX",
-    "FLY",
-    "FURB",
-    "G",
-    "I",
-    "ICN",
-    "INP",
-    "INT",
-    "ISC",
-    "LOG",
-    "N",
-    "PERF",
-    "PGH",
-    "PIE",
-    "PL",
-    "PT",
-    "PTH",
-    "PYI",
-    "Q",
-    "RET",
-    "RSE",
-    "RUF",
-    "S",
-    "SIM",
-    "SLF",
-    "SLOT",
-    "T10",
-    "T20",
-    "TCH",
-    "TD",
-    "TID",
-    "TRY",
-    "UP",
-    "W",
-    "YTT",
+    "F",   # https://docs.astral.sh/ruff/rules/#pyflakes-f
+    "E",   # https://docs.astral.sh/ruff/rules/#error-e
+    "W",   # https://docs.astral.sh/ruff/rules/#warning-w
+    "C90", # https://docs.astral.sh/ruff/rules/#mccabe-c90
+    "I",   # https://docs.astral.sh/ruff/rules/#isort-i
+    "N",   # https://docs.astral.sh/ruff/rules/#pep8-naming-n
+    # "D", # https://docs.astral.sh/ruff/rules/#pydocstyle-d
+    "UP",  # https://docs.astral.sh/ruff/rules/#pyupgrade-up
+    "YTT", # https://docs.astral.sh/ruff/rules/#flake8-2020-ytt
+    # "ANN", # https://docs.astral.sh/ruff/rules/#flake8-annotations-ann
+    "ASYNC", # https://docs.astral.sh/ruff/rules/#flake8-async-async
+    "S",     # https://docs.astral.sh/ruff/rules/#flake8-bandit-s
+    "BLE",   # https://docs.astral.sh/ruff/rules/#flake8-blind-except-ble
+    "FBT",   # https://docs.astral.sh/ruff/rules/#flake8-boolean-trap-fbt
+    "B",     # https://docs.astral.sh/ruff/rules/#flake8-bugbear-b
+    "A",     # https://docs.astral.sh/ruff/rules/#flake8-builtins-a
+    # "COM", # https://docs.astral.sh/ruff/rules/#flake8-commas-com
+    # "CPY", # https://docs.astral.sh/ruff/rules/#flake8-copyright-cpy
+    "C4",  # https://docs.astral.sh/ruff/rules/#flake8-comprehensions-c4
+    "DTZ", # https://docs.astral.sh/ruff/rules/#flake8-datetimez-dtz
+    "T10", # https://docs.astral.sh/ruff/rules/#flake8-debugger-t10
+    # "DJ", # https://docs.astral.sh/ruff/rules/#flake8-django-dj
+    # "EM", # https://docs.astral.sh/ruff/rules/#flake8-errmsg-em
+    "EXE",  # https://docs.astral.sh/ruff/rules/#flake8-executable-exe
+    "FA",   # https://docs.astral.sh/ruff/rules/#flake8-future-annotations-fa
+    "ISC",  # https://docs.astral.sh/ruff/rules/#flake8-implicit-str-concat-isc
+    "ICN",  # https://docs.astral.sh/ruff/rules/#flake8-import-conventions-icn
+    "LOG",  # https://docs.astral.sh/ruff/rules/#flake8-logging-log
+    "G",    # https://docs.astral.sh/ruff/rules/#flake8-logging-format-g
+    "INP",  # https://docs.astral.sh/ruff/rules/#flake8-no-pep420-inp
+    "PIE",  # https://docs.astral.sh/ruff/rules/#flake8-pie-pie
+    "T20",  # https://docs.astral.sh/ruff/rules/#flake8-print-t20
+    "PYI",  # https://docs.astral.sh/ruff/rules/#flake8-pyi-pyi
+    "PT",   # https://docs.astral.sh/ruff/rules/#flake8-pytest-style-pt
+    "Q",    # https://docs.astral.sh/ruff/rules/#flake8-quotes-q
+    "RSE",  # https://docs.astral.sh/ruff/rules/#flake8-raise-rse
+    "RET",  # https://docs.astral.sh/ruff/rules/#flake8-return-ret
+    "SLF",  # https://docs.astral.sh/ruff/rules/#flake8-self-slf
+    "SLOT", # https://docs.astral.sh/ruff/rules/#flake8-slots-slot
+    "SIM",  # https://docs.astral.sh/ruff/rules/#flake8-simplify-sim
+    "TID",  # https://docs.astral.sh/ruff/rules/#flake8-tidy-imports-tid
+    "TCH",  # https://docs.astral.sh/ruff/rules/#flake8-type-checking-tch
+    "INT",  # https://docs.astral.sh/ruff/rules/#flake8-gettext-int
+    "ARG",  # https://docs.astral.sh/ruff/rules/#flake8-unused-arguments-arg
+    "PTH",  # https://docs.astral.sh/ruff/rules/#flake8-use-pathlib-pth
+    "TD",   # https://docs.astral.sh/ruff/rules/#flake8-todos-td
+    "FIX",  # https://docs.astral.sh/ruff/rules/#flake8-fixme-fix
+    # "ERA", # https://docs.astral.sh/ruff/rules/#eradicate-era
+    # "PD", # https://docs.astral.sh/ruff/rules/#pandas-vet-pd
+    "PGH", # https://docs.astral.sh/ruff/rules/#pygrep-hooks-pgh
+    "PL",  # https://docs.astral.sh/ruff/rules/#pylint-pl
+    # "PLC", # https://docs.astral.sh/ruff/rules/#convention-c
+    # "PLE", # https://docs.astral.sh/ruff/rules/#error-e_1
+    # "PLR", # https://docs.astral.sh/ruff/rules/#refactor-r
+    # "PLW", # https://docs.astral.sh/ruff/rules/#warning-w_1
+    "TRY", # https://docs.astral.sh/ruff/rules/#tryceratops-try
+    "FLY", # https://docs.astral.sh/ruff/rules/#flynt-fly
+    # "NPY", # https://docs.astral.sh/ruff/rules/#numpy-specific-rules-npy
+    # "FAST", # https://docs.astral.sh/ruff/rules/#fastapi-fast
+    # "AIR", # https://docs.astral.sh/ruff/rules/#airflow-air
+    "PERF", # https://docs.astral.sh/ruff/rules/#perflint-perf
+    "FURB", # https://docs.astral.sh/ruff/rules/#refurb-furb
+    # "DOC",  # https://docs.astral.sh/ruff/rules/#pydoclint-doc
+    "RUF", # https://docs.astral.sh/ruff/rules/#ruff-specific-rules-ruf
 ]
 extend-ignore = [
     "TRY003",  # Avoid specifying long messages outside the exception class
