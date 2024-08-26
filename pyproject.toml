@@ -14,9 +14,9 @@ pydantic = "^2.8.2,<3"
 
 [tool.poetry.group.dev.dependencies]
 codespell = "^2.3.0"
-mypy = "^1.11.1"
+mypy = "^1.11.2"
 pytest = "^8.3.2"
-ruff = "^0.5.7"
+ruff = "^0.6.2"
 
 
 [build-system]
