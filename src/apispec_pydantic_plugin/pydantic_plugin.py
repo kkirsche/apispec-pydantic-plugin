@@ -48,28 +48,29 @@ class PydanticPlugin(BasePlugin):
             kwargs: All additional keyword arguments sent to `APISpec.schema()`
         """
         model: BaseModelAlias | None = kwargs.pop("model", None)
-        if model:
-            schema = model.model_json_schema(
-                ref_template="#/components/schemas/{model}"  # noqa: RUF027
-            )
+        if not model:
+            model = kwargs.pop("schema", None)
+            if not model:
+                return None
+        schema = model.model_json_schema(
+            ref_template="#/components/schemas/{model}"  # noqa: RUF027
+        )
 
-            # definitions is for Pydantic v1
-            # $defs is for Pydantic v2
-            # I kept both because this used to work, but I don't remember if it was
-            # on an earlier version of v2 or the last version of 1. It shouldn't harm
-            # anything though other than a slight performance hit for the looping
-            for key in ("definitions", "$defs"):
-                if self.spec and key in schema:
-                    for k, v in schema[key].items():
-                        with suppress(DuplicateComponentNameError):
-                            self.spec.components.schema(k, v)
+        # definitions is for Pydantic v1
+        # $defs is for Pydantic v2
+        # I kept both because this used to work, but I don't remember if it was
+        # on an earlier version of v2 or the last version of 1. It shouldn't harm
+        # anything though other than a slight performance hit for the looping
+        for key in ("definitions", "$defs"):
+            if self.spec and key in schema:
+                for k, v in schema[key].items():
+                    with suppress(DuplicateComponentNameError):
+                        self.spec.components.schema(k, v)
 
-                if key in schema:
-                    del schema[key]
+            if key in schema:
+                del schema[key]
 
-            return schema
-
-        return None
+        return schema
 
     def operation_helper(
         self,
