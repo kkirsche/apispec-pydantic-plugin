@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "apispec-pydantic-plugin"
-version = "0.5.3"
-description = ""
+version = "0.6.0"
+description = "A plugin to enable support for Pydantic models in APISpec."
 authors = ["Kevin Kirsche <kevin.kirsche@one.verizon.com>"]
 readme = "README.md"
 packages = [{ include = "apispec_pydantic_plugin", from = "src" }]
@@ -28,7 +28,7 @@ exclude = ["/tests"]
 [tool.pytest.ini_options]
 addopts = "-ra --strict-markers --strict-config"
 markers = []
-minversion = "7.1"
+minversion = "8.3"
 testpaths = ["tests"]
 
 [tool.pylint."MESSAGES CONTROL"]
@@ -44,10 +44,6 @@ python_version = "3.10"
 strict = true
 warn_return_any = true
 warn_unused_configs = true
-
-[[tool.mypy.overrides]]
-ignore_missing_imports = true
-module = []
 
 [tool.pydantic-mypy]
 init_forbid_extra = true
