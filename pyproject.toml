@@ -13,10 +13,10 @@ apispec = "^6.6.1,<7"
 pydantic = "^2.8.2,<3"
 
 [tool.poetry.group.dev.dependencies]
-codespell = "^2.3.0"
-mypy = "^1.11.2"
-pytest = "^8.3.3"
-ruff = "^0.6.8"
+codespell = "^2.4.1"
+mypy = "^1.15.0"
+pytest = "^8.3.4"
+ruff = "^0.9.4"
 
 [build-system]
 requires = ["poetry-core"]
