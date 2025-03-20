@@ -5,5 +5,6 @@ if [ $# -eq 0 ]; then
     exit 1
 fi
 
-# https://github.com/python-poetry/poetry/issues/5285#issuecomment-1336177595
-poetry publish -u __token__ -p $1 --build
+rm -rf ./dist
+uv build
+uv publish -t $1

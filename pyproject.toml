@@ -1,26 +1,18 @@
-[tool.poetry]
+[project]
 name = "apispec-pydantic-plugin"
-version = "0.6.0"
+version = "0.6.1"
 description = "A plugin to enable support for Pydantic models in APISpec."
-authors = ["Kevin Kirsche <kevin.kirsche@one.verizon.com>"]
+authors = [{ name = "Kevin Kirsche", email = "kevin.kirsche@one.verizon.com" }]
 readme = "README.md"
-packages = [{ include = "apispec_pydantic_plugin", from = "src" }]
-include = ["src/apispec_pydantic_plugin/py.typed"]
+requires-python = ">=3.10"
+dependencies = ["apispec>=6.6.1", "pydantic>=2.8.2"]
 
-[tool.poetry.dependencies]
-python = ">=3.10,<4"
-apispec = "^6.6.1,<7"
-pydantic = "^2.8.2,<3"
-
-[tool.poetry.group.dev.dependencies]
-codespell = "^2.4.1"
-mypy = "^1.15.0"
-pytest = "^8.3.4"
-ruff = "^0.9.4"
+[dependency-groups]
+dev = ["codespell>=2.4.1", "mypy>=1.15.0", "pytest>=8.3.5", "ruff>=0.11.0"]
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [tool.bandit]
 exclude = ["/tests"]
@@ -105,7 +97,6 @@ select = [
     "SLOT", # https://docs.astral.sh/ruff/rules/#flake8-slots-slot
     "SIM",  # https://docs.astral.sh/ruff/rules/#flake8-simplify-sim
     "TID",  # https://docs.astral.sh/ruff/rules/#flake8-tidy-imports-tid
-    "TCH",  # https://docs.astral.sh/ruff/rules/#flake8-type-checking-tch
     "INT",  # https://docs.astral.sh/ruff/rules/#flake8-gettext-int
     "ARG",  # https://docs.astral.sh/ruff/rules/#flake8-unused-arguments-arg
     "PTH",  # https://docs.astral.sh/ruff/rules/#flake8-use-pathlib-pth
