@@ -1,6 +1,6 @@
 [project]
 name = "apispec-pydantic-plugin"
-version = "0.6.2"
+version = "0.7.0"
 description = "A plugin to enable support for Pydantic models in APISpec."
 authors = [{ name = "Kevin Kirsche", email = "kevin.kirsche@one.verizon.com" }]
 readme = "README.md"
@@ -11,7 +11,7 @@ dependencies = ["apispec>=6.6.1", "pydantic>=2.8.2"]
 repository = "https://github.com/kkirsche/apispec-pydantic-plugin"
 
 [dependency-groups]
-dev = ["codespell>=2.4.1", "mypy>=1.15.0", "pytest>=8.3.5", "ruff>=0.11.0"]
+dev = ["codespell>=2.4.1", "mypy>=1.15.0", "pytest>=8.3.5", "ruff>=0.11.2"]
 
 [build-system]
 requires = ["hatchling"]
