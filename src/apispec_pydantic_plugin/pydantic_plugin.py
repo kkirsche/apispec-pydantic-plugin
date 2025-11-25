@@ -18,12 +18,14 @@ class PydanticPlugin(BasePlugin):
     spec: APISpec | None
     openapi_version: Version | None
     resolver: SchemaResolver | None
+    by_alias: bool
 
-    def __init__(self) -> None:
+    def __init__(self, *, by_alias: bool = False) -> None:
         self.spec = None
         self.openapi_version = None
 
         self.resolver = None
+        self.by_alias = by_alias
 
     def init_spec(self, spec: APISpec) -> None:
         """Initialize plugin with APISpec object
@@ -52,7 +54,8 @@ class PydanticPlugin(BasePlugin):
             if model is None:
                 continue
             schema = model.model_json_schema(
-                ref_template="#/components/schemas/{model}"  # noqa: RUF027
+                by_alias=self.by_alias,
+                ref_template="#/components/schemas/{model}",  # noqa: RUF027
             )
 
             # definitions is for Pydantic v1
