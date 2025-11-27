@@ -8,7 +8,8 @@ requires-python = ">=3.10"
 dependencies = ["apispec>=6.6.1", "pydantic>=2.8.2"]
 
 [project.urls]
-repository = "https://github.com/kkirsche/apispec-pydantic-plugin"
+homepage = "https://github.com/kkirsche/apispec-pydantic-plugin"
+bug = "https://github.com/kkirsche/apispec-pydantic-plugin/issues"
 
 [dependency-groups]
 dev = ["codespell>=2.4.1", "mypy>=1.16.1", "pytest>=8.4.0", "ruff>=0.11.13"]
