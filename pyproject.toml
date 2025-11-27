@@ -1,6 +1,6 @@
 [project]
 name = "apispec-pydantic-plugin"
-version = "0.7.1"
+version = "0.8.0"
 description = "A plugin to enable support for Pydantic models in APISpec."
 authors = [{ name = "Kevin Kirsche", email = "kevin.kirsche@one.verizon.com" }]
 readme = "README.md"
