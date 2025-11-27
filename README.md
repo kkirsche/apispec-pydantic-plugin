@@ -1,11 +1,12 @@
-
 # APISpec Pydantic Plugin
 
 This is a plugin that replaces `apispec.ext.marshmallow:MarshmallowPlugin` with an equivalent plugin for use with Pydantic.
 
+## Package
 
+- [PyPi](https://pypi.org/project/apispec-pydantic-plugin/)
 
 ## Acknowledgements
 
- - [APISpec's Marshmallow Plugin ](https://github.com/marshmallow-code/apispec/tree/dev/src/apispec/ext/marshmallow)
+- [APISpec's Marshmallow Plugin ](https://github.com/marshmallow-code/apispec/tree/dev/src/apispec/ext/marshmallow)
 - [challice-spec](https://github.com/TestBoxLab/chalice-spec)
